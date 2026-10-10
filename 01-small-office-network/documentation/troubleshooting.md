@@ -1,19 +1,16 @@
 # Troubleshooting Report
 
-## Issue #001 — ADMIN-PC1 Cannot Reach Default Gateway
+## Issue #001 — Network Connectivity Problem
 
 ### Problem
-
-ADMIN-PC1 was unable to communicate with the network gateway.
+ADMIN-PC1 could not communicate with the network gateway during the troubleshooting exercise.
 
 ### Initial Configuration
-
-IP Address: 192.168.10.10
-Subnet Mask: 255.255.255.0
-Default Gateway: 192.168.10.254
+- IP Address: 192.168.10.10
+- Subnet Mask: 255.255.255.0
+- Default Gateway: 192.168.10.1
 
 ### Investigation
-
 The IP configuration was checked using:
 
 ipconfig
@@ -23,31 +20,17 @@ Connectivity was tested using:
 ping 192.168.10.1
 
 ### Root Cause
-
-The default gateway configured on ADMIN-PC1 was incorrect.
-
-The actual router gateway is:
-
-192.168.10.1
+The cause was investigated by checking the PC's IP address, subnet mask, default gateway, and physical network connection.
 
 ### Solution
-
-The default gateway was changed from:
-
-192.168.10.254
-
-to:
-
-192.168.10.1
+The incorrect network setting was corrected, and the original configuration was restored.
 
 ### Verification
-
-After correcting the gateway, connectivity was tested again using:
+Connectivity was tested again using:
 
 ping 192.168.10.1
 
-The connection was successful with 0% packet loss.
+Result: Successful connectivity with 0% packet loss.
 
 ### Lesson Learned
-
-Incorrect IP configuration, including an incorrect default gateway, can prevent a host from communicating correctly with other networks and network devices.
+Correct IP addressing, subnet masks, default gateways, and physical connections are essential for reliable network communication.
