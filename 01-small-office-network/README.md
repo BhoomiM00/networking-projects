@@ -91,7 +91,6 @@ See [`documentation/troubleshooting.md`](documentation/troubleshooting.md).
 - `packet-tracer/` — Cisco Packet Tracer project file.
 - `configurations/` — Router and switch running configurations.
 - `screenshots/` — Topology and verification screenshots.
-- `topology/` — Network diagram files.
 - `documentation/` — Troubleshooting report and lab notes.
 
 ## 9. Skills Practiced
