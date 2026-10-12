@@ -65,4 +65,4 @@ The network will be designed and configured in Cisco Packet Tracer.
 
 ## Project Status
 
-In progress — network design and configuration are the next steps.
+Completed — VLANs 10 and 20 were configured, an 802.1Q trunk was established, router-on-a-stick inter-VLAN routing was implemented, and connectivity was verified using ping.
