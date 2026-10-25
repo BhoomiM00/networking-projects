@@ -1,0 +1,209 @@
+SW1-Core#show running-config
+Building configuration...
+
+Current configuration : 3870 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW1-Core
+!
+!
+!
+ip ssh version 2
+ip domain-name enterprise.lab
+!
+username netadmin secret 5 $1$mERr$uow8w1NUs8DHG5sxxwFx.0
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/2
+ description SERVER1
+ switchport access vlan 40
+ switchport mode access
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/4
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/5
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/6
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/7
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/8
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/9
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/10
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/11
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/12
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/13
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/14
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/15
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/16
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/17
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/18
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/19
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/20
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/21
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ description TRUNK_TO_R1
+ switchport trunk allowed vlan 10,20,30,40
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description TRUNK_TO_SW2
+ switchport trunk allowed vlan 10,20,30,40
+ switchport mode trunk
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan20
+ description MANAGEMENT_SVI
+ ip address 192.168.20.2 255.255.255.0
+!
+ip default-gateway 192.168.20.1
+!
+!
+!
+!
+ip access-list standard IT_SSH_ONLY
+ permit 192.168.20.0 0.0.0.255
+ deny any
+line con 0
+!
+line vty 0 4
+ access-class IT_SSH_ONLY in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class IT_SSH_ONLY in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
