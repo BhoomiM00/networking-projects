@@ -1,0 +1,228 @@
+SW2-Access#show running-config
+Building configuration...
+
+Current configuration : 4731 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW2-Access
+!
+!
+!
+ip ssh version 2
+ip domain-name enterprise.lab
+!
+username netadmin secret 5 $1$mERr$uow8w1NUs8DHG5sxxwFx.0
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ description HR_DEPARTMENT
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0090.21E3.1B1C
+ spanning-tree portfast
+!
+interface FastEthernet0/2
+ description HR_DEPARTMENT
+ switchport access vlan 10
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.4350.B166
+ spanning-tree portfast
+!
+interface FastEthernet0/3
+ description IT_DEPARTMENT
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0007.ECA6.5619
+ spanning-tree portfast
+!
+interface FastEthernet0/4
+ description IT_DEPARTMENT
+ switchport access vlan 20
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0002.1790.ADB4
+ spanning-tree portfast
+!
+interface FastEthernet0/5
+ description SALES_DEPARTMENT
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0001.972A.7162
+ spanning-tree portfast
+!
+interface FastEthernet0/6
+ description SALES_DEPARTMENT
+ switchport access vlan 30
+ switchport mode access
+ switchport port-security
+ switchport port-security mac-address sticky 
+ switchport port-security mac-address sticky 0030.F277.9BC7
+ spanning-tree portfast
+!
+interface FastEthernet0/7
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/8
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/9
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/10
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/11
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/12
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/13
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/14
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/15
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/16
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/17
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/18
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/19
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/20
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/21
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/22
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/23
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface FastEthernet0/24
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface GigabitEthernet0/1
+ description TRUNK_TO_SW1
+ switchport trunk allowed vlan 10,20,30,40
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+ description UNUSED_DISABLED
+ switchport access vlan 999
+ switchport mode access
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan20
+ description MANAGEMENT_SVI
+ ip address 192.168.20.2 255.255.255.0
+!
+ip default-gateway 192.168.20.1
+!
+!
+!
+!
+ip access-list standard IT_SSH_ONLY
+ permit 192.168.20.0 0.0.0.255
+ deny any
+line con 0
+!
+line vty 0 4
+ access-class IT_SSH_ONLY in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class IT_SSH_ONLY in
+ login local
+ transport input ssh
+!
+!
+!
+!
+end
